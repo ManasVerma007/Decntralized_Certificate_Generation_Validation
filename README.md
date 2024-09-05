@@ -28,8 +28,6 @@ git clone https://github.com/Sahil181045/Certificate-Validation-System.git
 ```
 You can run the project either through:
 - [Local Setup](#local-setup)
-- [Using Docker](#using-docker) (Recommended)
-
 ---
 
 ## Local Setup
@@ -121,53 +119,3 @@ Truffle requires node version 16 or higher. The node version on my machine on wh
 ---
 
 
-## Using Docker
-
-### Prerequisites
-
-- **Docker** 
-You can either download [Docker Desktop](https://www.docker.com/products/docker-desktop/) for Windows/Mac/Linux or on Linux you can install the docker package via a package manager.
-
-### Running the project
-
-1. Start the Docker engine by running the Docker Desktop application.
-
-2. Open a terminal in the project's root directory.
-
-3. Run the following command to start the 2 containers (ganache and streamlit-app).
-    ```sh
-    docker-compose up
-    ```
-
-4. You can now view the app on your browser running on [localhost:8501](https:localhost:8501).
-
-5. To stop and remove the containers, use the command:
-    ```sh
-    docker-compose down
-    ```
-
-    Note: The insitute email id is "institute@gmail.com" and password is "123456". You will require this for logging in as Institute for the process of Certificate generation.
-
----
-
-## Additional Notes
-
-- The docker-compose.yml file provided first downloads the images for ganache and streamlit-app from Docker hub and then starts these containers using docker-compose up.
-
-- If you want to build your own images, I have provided the Dockerfiles for ganache (Dockerfile.ganache) and streamlit-app (Dockerfile.streamlit). Before building the images, first make the below changes in application/connection.py and truffle-config.js:
-
-    In **application/connection.py**, on line 6:
-    ```
-    w3 = Web3(Web3.HTTPProvider('http://ganache:8545'))
-    ```
-    
-    In **truffle-config.js**, on line 4:
-    ```
-    host: "ganache",
-    ```
-
-    This changes the host to "ganache" which is the service defined in docker-compose.yml.
-
-    After making these changes, you can build the images using `docker-compose build`. After this, you can use `docker-compose up` to start the containers and `docker-compose down` to stop them.
-
----
