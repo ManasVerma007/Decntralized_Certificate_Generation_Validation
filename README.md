@@ -1,4 +1,4 @@
-# Certificate Validation using Blockchain
+# Certificate Generation Validation using Blockchain
 
 ## Introduction
 
